@@ -55,8 +55,8 @@ class BIP39xor:
             for i in range(0, len(self.part[0])):
                 s += '{:>6}   {:12} {:>5} | {:>6}   {:12} {:>5} | {:>6}   {:12} {:>5}\n'.format(
                         i+1, self.part[0][i].word, self.part[0][i].num,
-                        i+1, self.part[1][i].word, self.part[0][i].num,
-                        i+1, self.part[2][i].word, self.part[0][i].num
+                        i+1, self.part[1][i].word, self.part[1][i].num,
+                        i+1, self.part[2][i].word, self.part[2][i].num
                     )
             s += '--------------------------- | --------------------------- | ---------------------------\n\n'
 
