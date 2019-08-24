@@ -12,7 +12,7 @@ Bitcoin (BTC) | 1HY3jPYVfE6YZbuYTYfMpazvSKRXjZDMbS  | ![1HY3jPYVfE6YZbuYTYfMpazv
 
 # About
 
-Some people may want to store their BIP39 keys in a physical secured manner.  There are several options available, with some of the most popular being:
+Some people may want to store their BIP39 keys in a secured physical location.  There are several options available, with some of the most popular being:
 
 1. Store the full 24 word private seed on Cryptosteel or a similar product. This means the bearer has **100%** of the seed phrase and access to the coins.  
   
