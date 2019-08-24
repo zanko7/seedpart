@@ -35,18 +35,18 @@ Some people may want to store their BIP39 keys in a secured physical location.  
 --------------------------- | --------------------------- | ---------------------------
 Number   Word         Index | Number   Word         Index | Number   Word         Index
 --------------------------- | --------------------------- | ---------------------------
-     1   thank         1790 |      1   crisp         1790 |      1   unaware       1790
-     2   equip          609 |      2   velvet         609 |      2   sail           609
-     3   quality       1401 |      3   ability       1401 |      3   pyramid       1401
-     4   viable        1946 |      4   aim           1946 |      4   voyage        1946
-     5   merit         1116 |      5   dutch         1116 |      5   soup          1116
-     6   garden         765 |      6   camp           765 |      6   legal          765
-     7   phone         1308 |      7   actor         1308 |      7   patrol        1308
-     8   jeans          957 |      8   coconut        957 |      8   forget         957
-     9   mansion       1082 |      9   negative      1082 |      9   believe       1082
-    10   pilot         1319 |     10   thought       1319 |     10   dune          1319
-    11   grant          813 |     11   color          813 |     11   elite          813
-    12   toddler       1819 |     12   involve       1819 |     12   next          1819
+     1   thank         1790 |      1   crisp          413 |      1   unaware       1891
+     2   equip          609 |      2   velvet        1936 |      2   sail          1521
+     3   quality       1401 |      3   ability          1 |      3   pyramid       1400
+     4   viable        1946 |      4   aim             42 |      4   voyage        1968
+     5   merit         1116 |      5   dutch          547 |      5   soup          1663
+     6   garden         765 |      6   camp           262 |      6   legal         1019
+     7   phone         1308 |      7   actor           21 |      7   patrol        1289
+     8   jeans          957 |      8   coconut        359 |      8   forget         730
+     9   mansion       1082 |      9   negative      1183 |      9   believe        165
+    10   pilot         1319 |     10   thought       1799 |     10   dune           544
+    11   grant          813 |     11   color          365 |     11   elite          576
+    12   toddler       1819 |     12   involve        945 |     12   next          1194
 --------------------------- | --------------------------- | ---------------------------
 
 /-----------------------------------------------------------\
@@ -85,18 +85,18 @@ Number   Word         Index       Number   Word         Index
 --------------------------- | --------------------------- | ---------------------------
 Number   Word         Index | Number   Word         Index | Number   Word         Index
 --------------------------- | --------------------------- | ---------------------------
-     1   thank         1790 |      1   crisp         1790 |      1   unaware       1790
-     2   equip          609 |      2   velvet         609 |      2   sail           609
-     3   quality       1401 |      3   ability       1401 |      3   pyramid       1401
-     4   viable        1946 |      4   aim           1946 |      4   voyage        1946
-     5   merit         1116 |      5   dutch         1116 |      5   soup          1116
-     6   garden         765 |      6   camp           765 |      6   legal          765
-     7   phone         1308 |      7   actor         1308 |      7   patrol        1308
-     8   jeans          957 |      8   coconut        957 |      8   forget         957
-     9   mansion       1082 |      9   negative      1082 |      9   believe       1082
-    10   pilot         1319 |     10   thought       1319 |     10   dune          1319
-    11   grant          813 |     11   color          813 |     11   elite          813
-    12   toddler       1819 |     12   involve       1819 |     12   next          1819
+     1   thank         1790 |      1   crisp          413 |      1   unaware       1891
+     2   equip          609 |      2   velvet        1936 |      2   sail          1521
+     3   quality       1401 |      3   ability          1 |      3   pyramid       1400
+     4   viable        1946 |      4   aim             42 |      4   voyage        1968
+     5   merit         1116 |      5   dutch          547 |      5   soup          1663
+     6   garden         765 |      6   camp           262 |      6   legal         1019
+     7   phone         1308 |      7   actor           21 |      7   patrol        1289
+     8   jeans          957 |      8   coconut        359 |      8   forget         730
+     9   mansion       1082 |      9   negative      1183 |      9   believe        165
+    10   pilot         1319 |     10   thought       1799 |     10   dune           544
+    11   grant          813 |     11   color          365 |     11   elite          576
+    12   toddler       1819 |     12   involve        945 |     12   next          1194
 --------------------------- | --------------------------- | ---------------------------
 
 /-----------------------------------------------------------\
