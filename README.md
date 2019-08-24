@@ -3,13 +3,6 @@
 Michael Laforest `<mjlaforest` *at* `gmail` *dot* `com>`
 
 
-# Support
-
-Donation Method | Address | QR Code
---- | --- | ---
-Bitcoin Cash (BCH) | 1HSycjR3LAZxuLG34aEBbQdUSayPkh8XsH | ![1HSycjR3LAZxuLG34aEBbQdUSayPkh8XsH](https://raw.github.com/MJL85/natlas/master/docs/donate/BCH.png "Bitcoin Cash (BCH)")
-Bitcoin (BTC) | 1HY3jPYVfE6YZbuYTYfMpazvSKRXjZDMbS  | ![1HY3jPYVfE6YZbuYTYfMpazvSKRXjZDMbS](https://raw.github.com/MJL85/natlas/master/docs/donate/BTC.png "Bitcoin (BTC)")
-
 # About
 
 Some people may want to store their BIP39 keys in a secured physical location.  There are several options available, with some of the most popular being:
@@ -134,4 +127,11 @@ You could do this process by hand with the following procedure:
 1. Split the list of numbers into two equal lists, A and B.
 1. For each word in the two lists, calculate `A xor B` to produce the third list, C.
 1. To reconstruct given lists A&C or B&C, repeat step 3. (eg, if `A xor B = C` then `A xor C = B` and `B xor C = A`)
+
+# Support
+
+Donation Method | Address | QR Code
+--- | --- | ---
+Bitcoin Cash (BCH) | 1HSycjR3LAZxuLG34aEBbQdUSayPkh8XsH | ![1HSycjR3LAZxuLG34aEBbQdUSayPkh8XsH](https://raw.github.com/MJL85/natlas/master/docs/donate/BCH.png "Bitcoin Cash (BCH)")
+Bitcoin (BTC) | 1HY3jPYVfE6YZbuYTYfMpazvSKRXjZDMbS  | ![1HY3jPYVfE6YZbuYTYfMpazvSKRXjZDMbS](https://raw.github.com/MJL85/natlas/master/docs/donate/BTC.png "Bitcoin (BTC)")
 
