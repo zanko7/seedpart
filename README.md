@@ -20,7 +20,7 @@ Some people may want to store their BIP39 keys in a secured physical location.  
   
 1. Split the key into two parts, A and B.  Create a new set of 12 words, C, where `C = A xor B`. Two of three sets are required to recover the original seed.  The bearer of any of these has **50%** of the seed phrase.
 
-1. Shamir secret sharing or a similar algortihm could be used to protect the key in a significantly stronger manner.  However, these methods may be too difficult for non-technical family member or next of kin to recover in an emergency without the creators assistance.
+1. Shamir secret sharing or a similar algorithm could be used to protect the key in a significantly stronger manner.  However, these methods may be too difficult for non-technical family member or next of kin to recover in an emergency without the creators assistance.
   
 *seedpart* implements the XOR process from option #3.
 
