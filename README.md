@@ -33,6 +33,8 @@ Some people may want to store their BIP39 keys in a secured physical location.  
 >>> sp = seedpart.BIP39xor()
 >>> sp.split(key)
 >>> print(sp)
+```
+```
 /-------------------------------------------------------------------------------------\
 |                                 seedpart SEED PARTS                                 |
 |                                                                                     |
@@ -81,6 +83,8 @@ Number   Word         Index       Number   Word         Index
 >>> parts = [ 'thank equip quality viable merit garden phone jeans mansion pilot grant toddler', None, 'unaware sail pyramid voyage soup legal patrol forget believe dune elite next' ]
 >>> sp.join(parts)
 >>> print(sp)
+```
+```
 /-------------------------------------------------------------------------------------\
 |                                 seedpart SEED PARTS                                 |
 |                                                                                     |
