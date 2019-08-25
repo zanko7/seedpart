@@ -13,7 +13,7 @@ The process uses a series of XOR operations along with some entropy data to gene
 
 ## Splitting a Seed Phrase
 ```python
-\# python
+# python
 >>> import seedpart
 >>> key = 'thank equip quality viable merit garden phone jeans mansion pilot grant toddler crisp velvet ability aim dutch camp actor coconut negative thought color involve'
 >>> sp = seedpart.BIP39xor()
@@ -56,6 +56,7 @@ Number   Word         Index | Number   Word         Index | Number   Word       
 ```
 # Reconstructing the Seed from Two Parts
 ```python
+# python
 >>> import seedpart
 >>> sp = seedpart.BIP39xor()
 >>> shard1 = 'noble outer repair slow health guard tag witness gas awful chapter glory monkey hub reform sport seek chapter combine fan few chimney among potato'
