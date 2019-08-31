@@ -1,12 +1,12 @@
 #!/usr/bin/python
-
 import sys
 import random
 import hashlib
 
 DEFAULT_WORD_FILE        = 'words.txt'
 DEFAULT_WORD_FILE_SHA256 = '2f5eed53a4727b4bf8880d8f3f199efc90e58503646d9ff8eff3a2ed3b24dbda'
-word_list = None
+word_list                = None
+BIP39XOR_VER             = 'seedpart(bip39xor) v0.2'
 
 class bip39word:
     '''
@@ -18,12 +18,15 @@ class bip39word:
             self.word = w
             self.num  = self.get_index(w)
             if (self.num == None):
-                raise ValueError('BIP39 word "%s" is not valid.' % w)
+                raise ValueError('BIP39 word is not valid. (%s)' % w)
         elif type(w) == int:
             if ((w > 2047) | (w < 0)):
-                raise ValueError('BIP39 word index is %s but must be between 0 and 2047')
+                raise ValueError('BIP39 word index must be between 0 and 2047. (%s)' % w)
             self.word = word_list[w]
             self.num  = w
+        elif type(w) == type(self):
+            self.word = w.word
+            self.num  = w.num
         else:
             self.word = ''
             self.num  = -1
@@ -78,8 +81,8 @@ class bip39shard:
             self.words[idx] = val
 
     def reverse(self):
-        '''Reverse the list'''
-        self.words = self.words[::-1]
+        '''Return a copy of the object in reverse order.'''
+        return bip39shard(self.words[::-1])
 
     def get_words(self):
         '''Return list of word strings'''
@@ -103,6 +106,14 @@ class bip39shard:
 
 
 class BIP39xor:
+    '''
+    Split a BIP39 seed phrase into 3 parts using XOR operations.
+    2 of 3 parts are required to recover the original phrase.
+    .split(key)
+       View the shards with print()
+    .join([shard1, shard2, shard3])
+       View the key with print(), or .seed
+    '''
     def __init__(self, word_file = DEFAULT_WORD_FILE):
         global word_list
         word_list = self._load_word_file(word_file)
@@ -114,7 +125,6 @@ class BIP39xor:
 
     def __str__(self):
         s = ''
-
         if (self.shard != None):
             s += '/-------------------------------------------------------------------------------------\\\n'
             s += '|                                seedpart SEED SHARDS                                 |\n'
@@ -167,14 +177,12 @@ class BIP39xor:
                 h.update(str(d).encode('utf-8'))
                 if (h.hexdigest() != DEFAULT_WORD_FILE_SHA256):
                     raise Exception('Word file sha256 does not match.')
-                    return None
 
             w = d.splitlines()
             f.close()
             return w
         except:
             raise Exception('Unable to load words file: %s' % word_file)
-            return None
 
     def _get_random_words(self, length):
         '''
@@ -186,21 +194,16 @@ class BIP39xor:
             ret.append(word_list[random.randint(0, len(word_list)-1)])
         return ret
 
-    def _xor_words(self, shard1, shard2, inverse=0):
+    def _xor_words(self, shard1, shard2):
         '''
         XOR two bip39shard objects together and return the result.
-        If inverse=1, then while doing XORs, one shard increments
-        from 0->length while the other shard decrements from length->0.
         '''
         if (len(shard1) != len(shard2)):
             raise Exception('Cannot xor shards of different lengths.')
         
         shard3 = bip39shard(None, len(shard1))
         for i in range(0, len(shard1)):
-            if (inverse == 0):
-                shard3[i] = bip39word(shard1.words[i].num ^ shard2.words[i].num)
-            else:
-                shard3[i] = bip39word(shard1.words[i].num ^ shard2.words[len(shard2)-i-1].num)
+            shard3[i] = bip39word(shard1.words[i].num ^ shard2.words[i].num)
         return shard3
 
     def split(self, seed):
@@ -214,7 +217,7 @@ class BIP39xor:
         self.shard    = [bip39shard(None, len(words))] * 3
         self.shard[0] = entropy
         self.shard[1] = entropy_xor
-        self.shard[2] = self._xor_words(self.shard[0], self.shard[1], 1)
+        self.shard[2] = self._xor_words(self.shard[0], self.shard[1].reverse())
         self.seed     = None
 
     def join(self, parts):
@@ -230,7 +233,6 @@ class BIP39xor:
         Either print() the bip39xor object or get the .seed string member
         to see the original seed information.
         '''
-
         # sanity checks
         # - no more than 1 missing
         # - shard lengths must be equal
@@ -275,11 +277,9 @@ class BIP39xor:
 
         # reconstruct the missing shard
         if (missing == 0):
-            self.shard[missing] = self._xor_words(self.shard[1], self.shard[2], 1)
-            self.shard[missing].reverse()
+            self.shard[missing] = self._xor_words(self.shard[1].reverse(), self.shard[2])
         elif (missing == 1):
-            self.shard[missing] = self._xor_words(self.shard[0], self.shard[2])
-            self.shard[missing].reverse()
+            self.shard[missing] = self._xor_words(self.shard[0].reverse(), self.shard[2].reverse())
         else:
             self.shard[missing] = self._xor_words(self.shard[0], self.shard[1])
 

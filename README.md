@@ -7,6 +7,8 @@ Michael Laforest `<mjlaforest` *at* `gmail` *dot* `com>`
 seedpart will take a 12 or 24 word seed and generate three different seeds of the same length.  
 Two of the three generated seeds can be used to recover the original seed phrase.  
   
+The plaintext module may be useful for securely storing administrative system passwords among three trusted parties. Two parties would need to cooperate in order to recover the administrative password they are holding.  
+  
 The process uses a series of XOR operations along with some entropy data to generate shards which do not expose any part of the original seed phrase.
 
 # Example Usage
@@ -61,6 +63,7 @@ Number   Word         Index | Number   Word         Index | Number   Word       
 >>> sp = seedpart.BIP39xor()
 >>> shard1 = 'noble outer repair slow health guard tag witness gas awful chapter glory monkey hub reform sport seek chapter combine fan few chimney among potato'
 >>> shard2 = 'engine sphere boost disorder ticket decline leaf mention trap reform duck liberty route orient refuse subject manual allow consider lawsuit shoe similar clean ten'
+>>> shard3 = 'ensure require lazy apart beef elite swear knock retire pill road tenant average coil abandon curious elite flee bench recall helmet coyote story tired'
 >>> sp.join([shard1, shard2, None])
 >>> print(sp)
 ```
@@ -99,6 +102,28 @@ You can reconstruct the seed by hand with the following procedure:
 1. If you are missing shard 2:
     1. XOR each number from both shards to generate a third shard. For both shards start with the first word.
 1. XOR shard 0 and shard 1 to recover the original seed phrase.
+
+# Plaintext Example
+
+```python
+>>> import seedpart
+>>> sobj = seedpart.plaintextxor()
+>>> sobj.split('horse battery')
+>>> print(sobj)
+Shard 1: 523d79712f41276a66556e765c
+Shard 2: 3a520b024a61450b12210b0425
+Shard 3: 773972503d4a620b2c57652466
+>>>
+>>> sobj2 = seedpart.plaintextxor()
+>>> sobj2.join(['523d79712f41276a66556e765c', None, '773972503d4a620b2c57652466'])
+>>> print(sobj2)
+Plaintext key: horse battery
+>>>
+>>> sobj3 = seedpart.plaintextxor()
+>>> sobj3.join(['523d79712f41276a66556e765c', None, '3a3427596833665d3e4e4c232e'])
+>>> print(sobj3)
+Plaintext key:  h[jwvf!}04
+```
 
 # Support
 
