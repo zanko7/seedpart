@@ -110,18 +110,28 @@ You can reconstruct the seed by hand with the following procedure:
 >>> sobj = seedpart.plaintextxor()
 >>> sobj.split('horse battery')
 >>> print(sobj)
+```
+```
 Shard 1: 523d79712f41276a66556e765c
 Shard 2: 3a520b024a61450b12210b0425
 Shard 3: 773972503d4a620b2c57652466
+```
+```python
 >>>
 >>> sobj2 = seedpart.plaintextxor()
 >>> sobj2.join(['523d79712f41276a66556e765c', None, '773972503d4a620b2c57652466'])
 >>> print(sobj2)
+```
+```
 Plaintext key: horse battery
+```
+```python
 >>>
 >>> sobj3 = seedpart.plaintextxor()
 >>> sobj3.join(['523d79712f41276a66556e765c', None, '3a3427596833665d3e4e4c232e'])
 >>> print(sobj3)
+```
+```
 Plaintext key:  h[jwvf!}04
 ```
 
