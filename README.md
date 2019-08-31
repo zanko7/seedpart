@@ -56,7 +56,7 @@ Number   Word         Index | Number   Word         Index | Number   Word       
     24   potato        1350 |     24   ten           1783 |     24   tired         1813
 --------------------------- | --------------------------- | ---------------------------
 ```
-# Reconstructing the Seed from Two Parts
+## Reconstructing the Seed from Two Parts
 ```python
 # python
 >>> import seedpart
