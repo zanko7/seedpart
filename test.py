@@ -2,10 +2,11 @@
 import seedpart
 import random
 
-def do_bip39_test(test, seedlen):
+def do_bip39_test(test, seedlen, key = None):
     sobj = seedpart.BIP39xor()
     
-    key = ' '.join(sobj._get_random_words(seedlen))
+    if (key == None):
+        key = ' '.join(sobj._get_random_words(seedlen))
     print('-----------------------------')
     print('BIP39xor Test %s Key' % test)
     print(key)

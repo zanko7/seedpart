@@ -62,9 +62,8 @@ Number   Word         Index | Number   Word         Index | Number   Word       
 >>> import seedpart
 >>> sp = seedpart.BIP39xor()
 >>> shard1 = 'noble outer repair slow health guard tag witness gas awful chapter glory monkey hub reform sport seek chapter combine fan few chimney among potato'
->>> shard2 = 'engine sphere boost disorder ticket decline leaf mention trap reform duck liberty route orient refuse subject manual allow consider lawsuit shoe similar clean ten'
 >>> shard3 = 'ensure require lazy apart beef elite swear knock retire pill road tenant average coil abandon curious elite flee bench recall helmet coyote story tired'
->>> sp.join([shard1, shard2, None])
+>>> sp.join([shard1, None, shard3])
 >>> print(sp)
 ```
 ```
@@ -88,7 +87,9 @@ Number   Word         Index       Number   Word         Index
     12   toddler       1819           24   involve        945
 ---------------------------       ---------------------------
 ```
-
+  
+Key shards may include abbreviated words as long they are not ambiguous. For example, you can use `cata` in place of  `catalog`.  
+  
 # Reconstructing By Hand
 
 You can reconstruct the seed by hand with the following procedure:  

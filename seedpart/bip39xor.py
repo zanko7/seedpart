@@ -6,7 +6,7 @@ import hashlib
 DEFAULT_WORD_FILE        = 'words.txt'
 DEFAULT_WORD_FILE_SHA256 = '2f5eed53a4727b4bf8880d8f3f199efc90e58503646d9ff8eff3a2ed3b24dbda'
 word_list                = None
-BIP39XOR_VER             = 'seedpart(bip39xor) v0.2'
+BIP39XOR_VER             = 'seedpart(bip39xor) v0.3'
 
 class bip39word:
     '''
@@ -15,8 +15,8 @@ class bip39word:
     '''
     def __init__(self, w = None):
         if type(w) == str:
-            self.word = w
             self.num  = self.get_index(w)
+            self.word = word_list[self.num] if (self.num != None) else None
             if (self.num == None):
                 raise ValueError('BIP39 word is not valid. (%s)' % w)
         elif type(w) == int:
@@ -38,11 +38,18 @@ class bip39word:
         return '<bip39word word:%s num:%s>' % (self.word, self.num)
 
     def get_index(self, w):
+        '''Get index for specified word or truncated word.'''
         for i in range(0, len(word_list)):
             if (word_list[i] == w):
+                # exact match
+                return i
+            if (word_list[i][:len(w)] == w):
+                # partial match
+                if ((i < len(word_list)) & (word_list[i+1][:len(w)] == w)):
+                    # next word partial matches too. word is ambiguous
+                    raise ValueError('BIP39 partial word is ambiguous (%s).' % w)
                 return i
         return None
-
 
 class bip39shard:
     '''
