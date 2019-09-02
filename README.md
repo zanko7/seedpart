@@ -11,7 +11,7 @@ The plaintext module may be useful for securely storing administrative system pa
   
 The process uses a series of XOR operations along with some entropy data to generate shards which do not expose any part of the original seed phrase.
   
-![BIP39 Demo gif](https://github.com/MJL85/seedpart/blob/master/seedpart/docs/BIP39demo.gif)  
+![BIP39 Demo gif](https://github.com/MJL85/seedpart/blob/master/docs/BIP39demo.gif)  
   
 # Example Usage
 
