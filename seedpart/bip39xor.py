@@ -6,7 +6,7 @@ import hashlib
 DEFAULT_WORD_FILE        = 'words.txt'
 DEFAULT_WORD_FILE_SHA256 = '2f5eed53a4727b4bf8880d8f3f199efc90e58503646d9ff8eff3a2ed3b24dbda'
 word_list                = None
-BIP39XOR_VER             = 'seedpart(bip39xor) v0.3'
+BIP39XOR_VER             = 'seedpart(bip39xor) v0.3.1'
 
 class bip39word:
     '''
@@ -265,10 +265,6 @@ class BIP39xor:
                     if (seedlen != shardlen):
                         raise Exception('Key shards must contain equal number of elements (%s, %s)[index %s].' % (seedlen, len(parts[i]), i))
 
-        if (missing == -1):
-            # no parts missing
-            return
-
         # normalize the bip39shard's
         self.shard = [bip39shard(length=seedlen), bip39shard(length=seedlen), bip39shard(length=seedlen)]
         for i in range(0, 3):
@@ -282,13 +278,14 @@ class BIP39xor:
                 elif type(parts[i]) == type(bip39shard()):
                     self.shard[i] = parts[i]
 
-        # reconstruct the missing shard
-        if (missing == 0):
-            self.shard[missing] = self._xor_words(self.shard[1].reverse(), self.shard[2])
-        elif (missing == 1):
-            self.shard[missing] = self._xor_words(self.shard[0].reverse(), self.shard[2].reverse())
-        else:
-            self.shard[missing] = self._xor_words(self.shard[0], self.shard[1])
+        if (missing != -1):
+            # reconstruct the missing shard
+            if (missing == 0):
+                self.shard[missing] = self._xor_words(self.shard[1].reverse(), self.shard[2])
+            elif (missing == 1):
+                self.shard[missing] = self._xor_words(self.shard[0].reverse(), self.shard[2].reverse())
+            else:
+                self.shard[missing] = self._xor_words(self.shard[0], self.shard[1])
 
         # reconstruct the seed phrase string
         joinshard = self._xor_words(self.shard[0], self.shard[1])
