@@ -8,12 +8,12 @@ seedpart will take a 12 or 24 word seed and generate three different seeds of th
 Two of the three generated seeds can be used to recover the original seed phrase.  
   
 ![GUI Demo gif](https://github.com/MJL85/seedpart/blob/master/docs/gui_demo.gif)  
-
-The plaintext module may be useful for securely storing administrative system passwords among three trusted parties. Two parties would need to cooperate in order to recover the administrative password they are holding.  
   
-The process uses a series of XOR operations along with some entropy data to generate shards which do not expose any part of the original seed phrase.
+The process uses a series of XOR operations along with some entropy data to generate shards which do not expose any part of the original seed phrase.  
   
 ![BIP39 Demo gif](https://github.com/MJL85/seedpart/blob/master/docs/BIP39demo.gif)  
+  
+The plaintext module may be useful for securely storing administrative system passwords among three trusted parties. Two parties would need to cooperate in order to recover the administrative password they are holding.  
   
 # Example Usage
 
