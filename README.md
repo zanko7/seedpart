@@ -99,13 +99,12 @@ Key shards may include abbreviated words as long they are not ambiguous. For exa
 You can reconstruct the seed by hand with the following procedure:  
 1. Convert each shard into a list of numbers, where each number is the line the word appears in the BIP39 list minus 1 (e.g. "abondon" = 0, "monkey" = 1145).
 1. If you are missing shard 0:
-    1. XOR each number from both shards to generate a third shard. For shard 1, start with the first word and work down. For shard 2, start with the last shard and work backwards.
-	1. Reverse the list generated from the previous step.
+    1. XOR each number from both shards to generate a third shard. For shard 1, start with the last word and work up. For shard 2, start with the first word and work down.
 1. If you are missing shard 1:
     1. XOR each number from both shards to generate a third shard. For both shards start with the first word.
 	1. Reverse the list generated from the previous step.
 1. If you are missing shard 2:
-    1. XOR each number from both shards to generate a third shard. For both shards start with the first word.
+    1. Skip to next step.
 1. XOR shard 0 and shard 1 to recover the original seed phrase.
 
 # Plaintext Example
