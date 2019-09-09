@@ -4,15 +4,16 @@ from seedpart.bip39xor import bip39shard
 import random
 import tkinter
 from   tkinter import ttk, Frame, Label, Button, WORD, END, StringVar, OptionMenu
-from   tkinter import messagebox, Menu
+from   tkinter import messagebox, Message, Menu, Toplevel
 from tkinter.scrolledtext import ScrolledText
 
-GUI_VER = 'SeedPart GUI v0.1'
+GUI_VER = 'SeedPart GUI v0.2'
 
 class MainWin(Frame):
     def __init__(self, master = None):
         Frame.__init__(self, master)
         Frame.pack(self, expand=1, fill='both')
+        self.root = master
 
         for col in range(0, 6):
             self.columnconfigure(col, weight=1)
@@ -115,9 +116,9 @@ class MainWin(Frame):
         s += '---------------------------\n'
         for i in range(0, len(shard.words)):
             s += '{:>6}   {:12} {:>5}\n'.format(i+1, shard.words[i].word, shard.words[i].num)
-        print(s)
-        self.option_add('*Dialog.msg.font', 'Helvetica 12')
-        messagebox.showinfo('SeedPart %s' % part, s)
+        popup = Message(Toplevel(master=self.root), text=s)
+        popup.config(font=('Courier', 12))
+        popup.pack()
 
     def split(self):
         key = self.seed_tb.get('1.0', END+'-1c')
@@ -177,7 +178,7 @@ class MainWin(Frame):
 def main():
     r = tkinter.Tk()
     r.title('SeedPart')
-    win = MainWin(None)
+    win = MainWin(r)
     menubar = Menu(r)
     menubar.add_command(label='About', command=win.menu_about)
     r.config(menu=menubar)
