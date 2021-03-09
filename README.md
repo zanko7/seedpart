@@ -1,7 +1,5 @@
 # seedpart
 
-Michael Laforest `<mjlaforest` *at* `gmail` *dot* `com>`
-
 # About
 
 seedpart will take a 12 or 24 word seed and generate three different seeds of the same length.  
