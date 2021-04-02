@@ -1,0 +1,7 @@
+# python
+>>> import seedpart
+>>> sp = seedpart.BIP39xor()
+>>> shard1 = ' theory broom spend light palace weather negative march climb accident mom grief'
+>>> shard3 = 'between pioneer noise kind thunder poverty silent grid health hire pony will'
+>>> sp.join([shard1, None, shard3])
+>>> print(sp)
